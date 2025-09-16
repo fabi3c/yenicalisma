@@ -18,6 +18,13 @@ body {
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-serif: Georgia, "Times New Roman", serif;
   --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --surface-1: #181818;
+  --surface-2: #1f1f1f;
+  --border: rgba(255,255,255,.08);
+  --ring-accent: rgba(59,130,246,.35);
+  --shadow-sm: 0 4px 10px rgba(0,0,0,.2);
+  --shadow-md: 0 8px 18px rgba(0,0,0,.25);
 }
 
 /* Yardımcı font sınıfları */
@@ -256,4 +263,138 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .gallery img { transition: none; }
   .gallery img:hover { transform: none; }
+}
+
+/* Yardımcı: gizle */
+.hidden { display: none; }
+
+/* Quiz yerleşimi (dar kapsamlı) */
+.quiz-container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.quiz-title { margin: 12px 0; }
+.quiz-subtitle { color: #9ca3af; margin-bottom: 16px; }
+
+.quiz-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+.quiz-progress {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .3px;
+  color: #cbd5e1;
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.question-card {
+  background: linear-gradient(180deg, var(--surface-2), #171717);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.question-text {
+  font-size: 19px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 2+ kolon, ekrana göre */
+  gap: 12px;
+}
+
+.option-btn {
+  display: grid;
+  grid-template-columns: 36px 1fr;  /* sol rozet + metin */
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #222, #1c1c1c);
+  color: #eaeaea;
+  cursor: pointer;
+  transition: background-color .18s ease, box-shadow .18s ease, transform .12s ease, border-color .18s ease;
+}
+
+.option-btn > strong {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(249,115,22,.35);            /* accent’in yumuşak tonu */
+  border: 1px solid rgba(249,115,22,.5);
+}
+
+.option-btn > span {
+  line-height: 1.35;
+  color: #e5e7eb;
+}
+
+.option-btn:hover {
+  background: linear-gradient(180deg, #262626, #202020);
+  border-color: rgba(255,255,255,.14);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.04);
+}
+.option-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring-accent);
+  border-color: var(--ring-accent);
+}
+.option-btn:active {
+  transform: translateY(0); /* hover’daki -1px’i geri al */
+}
+
+.option-btn.selected {
+  background: linear-gradient(180deg, rgba(59,130,246,.18), rgba(59,130,246,.10));
+  border-color: rgba(59,130,246,.45);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.22);
+}
+.option-btn.selected > strong {
+  background: var(--clr-accent);
+  border-color: transparent;
+  color: #111;
+}
+
+.quiz-actions { display: flex; gap: 10px; margin-top: 12px; }
+
+.btn-secondary {
+  background-color: #374151;
+}
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: #2b3440;
+  box-shadow: 0 0 0 3px rgba(55,65,81,.45);
+}
+
+/* Sonuç listesi */
+.result-list { margin: 12px 0 0; padding-left: 20px; }
+.result-list li { margin: 6px 0; }
+.result-list li.correct { color: var(--clr-success); }
+.result-list li.wrong   { color: var(--clr-danger); }
+.quiz-score { margin: 8px 0 12px; font-weight: 600; }
+
+/* Küçük ekran */
+@media (max-width: 520px) {
+  .options { grid-template-columns: 1fr; }
+  .option-btn {
+    grid-template-columns: 32px 1fr;
+    padding: 10px 12px;
+  }
+  .option-btn > strong { width: 28px; height: 28px; font-size: 12px; }
 }

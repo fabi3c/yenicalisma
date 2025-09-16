@@ -1,0 +1,51 @@
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="site-header">
+		<nav class="nav-container" role="navigation" aria-label="Main">
+			<a class="logo font-serif text-accent" href="index.html">ney</a>
+			<ul class="menu">
+				<li><a class="menu-link text-primary" href="index.html">Home</a></li>
+				<li><a class="menu-link text-accent" href="kedigaleri.html">Images</a></li>
+				<li><a class="menu-link text-accent" href="quiz.html" aria-current="page">Quiz</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="quiz-container">
+		<section id="start-screen">
+			<h1 class="quiz-title">Git, GitHub ve React Quiz</h1>
+			<p class="quiz-subtitle">60+ soruluk havuzdan rastgele 10 soru.</p>
+			<button id="start-btn" class="btn">Quize Başla</button>
+		</section>
+
+			<section id="quiz-screen" class="hidden">
+			<div class="quiz-header-row">
+				<div class="quiz-progress" id="progress">Soru 1/10</div>
+			</div>
+			<article class="question-card">
+				<h2 class="question-text" id="question"></h2>
+				<div class="options" id="options"></div>
+			</article>
+			<div class="quiz-actions">
+				<button id="next-btn" class="btn">Sonraki</button>
+				<button id="finish-btn" class="btn btn-secondary hidden">Bitir</button>
+			</div>
+		</section>
+
+		<section id="result-screen" class="hidden">
+			<h2>Sonuç</h2>
+			<p class="quiz-score" id="score"></p>
+			<ol class="result-list" id="result-list"></ol>
+			<button id="restart-btn" class="btn">Tekrar</button>
+		</section>
+	</main>
+
+	<script src="script/quiz.js"></script>
+</body>
+</html>
