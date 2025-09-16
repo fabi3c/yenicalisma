@@ -126,7 +126,7 @@ body {
     box-shadow: 0 11px 6px rgba(0, 0, 0, 0.1);
     letter-spacing: 0.5px;
     font-family: var(--font-sans);
-    display: inline-block;
+  
     
 }
 
@@ -140,5 +140,148 @@ body {
 .block-center { display: block; width: fit-content; margin-left: auto; margin-right: auto; }
 .block-right  { display: block; width: fit-content; margin-left: auto; }
 
-/* Örnek kullanım:
-<p class="yazi1 text
+.divabi {
+  background: #2b2c2c;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 15px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.7px;
+    font-family: var(--font-sans);
+    display: inline-block;
+    color: #e2e8f0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgb(12, 124, 86);
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .15s ease, box-shadow .15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: rgb(10, 102, 71);
+  box-shadow: 0 0 0 3px rgba(12,124,86,.45);
+  outline: none;
+}
+
+.kedifoto
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.kedi2
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi3
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi4
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi5
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi6
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi7
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi8
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi9
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi10
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi11
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
+.kedi12
+{
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: flexbox;
+  margin: 20px auto;
+}
