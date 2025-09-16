@@ -101,7 +101,7 @@ const QUESTIONS = [
     'Stil için', 'Performans/doğru yeniden kullanım için', 'SEO için', 'Router için'
   ], answer: 1 },
 ];
-
+  
 // Ek soru havuzu (Git & GitHub, Semantic Commits, Lifecycle, Memoization, Context, TS, Atomic Design)
 const EXTRA_QUESTIONS = [
   // 1) Git & GitHub
@@ -228,6 +228,107 @@ const EXTRA_QUESTIONS = [
   ], answer: 0 },
 ];
 
+// Ek: JavaScript/HTML/CSS soruları
+const ADDITIONAL_JS = [
+  { id: 'js-closure', q: 'Closure nedir?', options: [
+    'Sadece sınıflarda kullanılan kalıtım tekniği', 'Bir fonksiyonun, tanımlandığı kapsamın değişkenlerine erişimi koruması', 'Global değişken', 'Event döngüsü'
+  ], answer: 1 },
+  { id: 'js-eq', q: '== ile === farkı nedir?', options: [
+    '== tip dönüşümü yapmaz, === yapar', 'Her ikisi de tip dönüşümü yapar', '== tip dönüşümü yapar, === yapmaz', 'İkisi aynıdır'
+  ], answer: 2 },
+  { id: 'js-var-let-const', q: 'var, let ve const hakkında doğru ifade?', options: [
+    'var blok kapsamına sahiptir', 'let ve const blok kapsamına sahiptir', 'const yeniden atanabilir', 'let işlev kapsamına sahiptir'
+  ], answer: 1 },
+  { id: 'js-event-loop', q: 'Event loop’un görevi nedir?', options: [
+    'CSS’yi derlemek', 'Senkron kodu kuyruğa almak', 'Call stack ve task/microtask kuyruklarını koordine etmek', 'DOM’u boyamak'
+  ], answer: 2 },
+  { id: 'js-promise', q: 'Promise.resolve(1).then(x => x+1).then(console.log) çıktısı?', options: [
+    '1', '2', 'undefined', 'Promise'
+  ], answer: 1 },
+];
+
+const ADDITIONAL_HTML = [
+  { id: 'html-semantic', q: 'Semantik HTML etiketi hangisidir?', options: [
+    'div', 'span', 'section', 'b'
+  ], answer: 2 },
+  { id: 'html-alt', q: 'img için alt özniteliği neden önemlidir?', options: [
+    'SEO ve erişilebilirlik için alternatif metin sağlar', 'Resmi büyütür', 'Lazy-load zorunludur', 'Resmi önbelleğe alır'
+  ], answer: 0 },
+  { id: 'html-form-method', q: 'Form verisini URL’e ekleyen method?', options: [
+    'POST', 'PUT', 'GET', 'PATCH'
+  ], answer: 2 },
+  { id: 'html-meta-viewport', q: 'Mobil uyum için tipik viewport meta içeriği?', options: [
+    'width=1024', 'initial-scale=2', 'width=device-width, initial-scale=1', 'user-scalable=no'
+  ], answer: 2 },
+  { id: 'html-block-inline', q: 'Block vs inline için doğru ifade?', options: [
+    'Inline genişlik kaplar', 'Block tüm satırı kaplayabilir, inline satır içinde akar', 'Block satır içinde akar', 'Inline margin almaz'
+  ], answer: 1 },
+];
+
+const ADDITIONAL_CSS = [
+  { id: 'css-specificity', q: 'Spesifiklik sırası en düşükten en yükseğe?', options: [
+    'ID > Class > Element', 'Element > Class > ID', 'Class > ID > Element', 'Inline > ID > Class'
+  ], answer: 1 },
+  { id: 'css-box-model', q: 'Box modelde içerik + padding + border toplam genişliği için hangisi kullanılır?', options: [
+    'box-sizing: content-box', 'box-sizing: border-box', 'display: inline-block', 'width: auto'
+  ], answer: 1 },
+  { id: 'css-flex-grid', q: 'Satır/sütun yerleşimleri için hangi ifade doğru?', options: [
+    'Flexbox iki boyutludur, Grid tek boyutlu', 'Grid iki boyutludur, Flexbox tek boyutlu', 'İkisi de sadece satır içindir', 'İkisi de aynı'
+  ], answer: 1 },
+  { id: 'css-position-sticky', q: 'position: sticky için doğru ifade?', options: [
+    'Her zaman sabittir', 'Scroll konumuna göre belirli eşiğe gelince yapışır', 'Sadece parent fixed ise çalışır', 'Z-index gerekmez'
+  ], answer: 1 },
+  { id: 'css-media', q: '320px altı ekranlar için media query?', options: [
+    '@media (max-width: 320px) { ... }', '@media (min-width: 320px) { ... }', '@media screen=320px { ... }', '@media width<=320 { ... }'
+  ], answer: 0 },
+];
+
+// Havuzları birleştir ve kategorize et
+const QUIZ_SIZE = 20;
+const ALL_POOL = () => [
+  ...QUESTIONS,
+  ...(typeof EXTRA_QUESTIONS !== 'undefined' ? EXTRA_QUESTIONS : []),
+  ...ADDITIONAL_JS,
+  ...ADDITIONAL_HTML,
+  ...ADDITIONAL_CSS,
+];
+
+// Yardımcı: id prefix kontrolü
+const idStarts = (prefixes, id) => prefixes.some(p => id.startsWith(p));
+
+// Banka: mevcut soruları id’lerine göre gruplandır
+function buildBank() {
+  const all = ALL_POOL();
+
+  const gitIdsExtra = new Set([
+    'cc-valid-type','cc-format','cc-breaking','cc-fix-example',
+    'merge-vs-rebase-basic','gitignore-node'
+  ]);
+
+  const reactExtras = new Set([
+    'mount-effect','unmount-effect','update-effect','class-mount-order',
+    'react-memo','useMemo','useCallback','memo-pitfall',
+    'modern-prefer','hooks-where',
+    'abstract-support','abstract-pattern',
+    'context-create','context-provider','context-consume','context-usecase',
+    'atomic-order','atomic-molecule','atomic-organism','atomic-template-vs-page'
+  ]);
+
+  const bank = {
+    git: all.filter(q => idStarts(['git-'], q.id) || gitIdsExtra.has(q.id)),
+    github: all.filter(q => idStarts(['gh-'], q.id)),
+    react: all.filter(q =>
+      idStarts(['react-','jsx-','state-','useState','useEffect','list-key'], q.id) ||
+      reactExtras.has(q.id)
+    ),
+    javascript: all.filter(q => idStarts(['js-','ts-'], q.id)),
+    html: all.filter(q => idStarts(['html-'], q.id)),
+    css: all.filter(q => idStarts(['css-'], q.id)),
+  };
+
+  return bank;
+}
+
 // Yardımcılar
 const $ = (id) => document.getElementById(id);
 const LETTERS = ['A', 'B', 'C', 'D'];
@@ -239,8 +340,6 @@ const shuffle = (arr) => {
   }
   return a;
 };
-// 20 soru seç
-const QUIZ_SIZE = 20;
 
 // Yeni: her soru için şıkları karıştır ve doğru cevap indeksini güncelle
 function shuffleQuestion(q) {
@@ -293,9 +392,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// onStart: seçilen kategoriye göre havuz hazırla
 function onStart() {
-  // Havuz: mevcut + ek sorular, karıştır, 20 seç, her sorunun şıklarını da karıştır
-  const pool = QUESTIONS.concat(EXTRA_QUESTIONS);
+  const selectedInput = document.querySelector('input[name="category"]:checked');
+  const category = selectedInput ? selectedInput.value : 'mix';
+
+  const bank = buildBank();
+  let pool;
+  if (category === 'mix') {
+    pool = ALL_POOL();
+  } else {
+    pool = bank[category] || ALL_POOL();
+  }
+
+  // 20 soru seç, her birinde şıkları karıştır
   picked = shuffle(pool)
     .slice(0, Math.min(QUIZ_SIZE, pool.length))
     .map(shuffleQuestion);

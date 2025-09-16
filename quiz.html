@@ -21,10 +21,22 @@
 		<section id="start-screen">
 			<h1 class="quiz-title">Git, GitHub ve React Quiz</h1>
 			<p class="quiz-subtitle">Havuzdan rastgele 20 soru.</p>
+
+			<fieldset class="category-fieldset">
+				<legend class="category-legend">Kategori seç</legend>
+				<label class="category-label"><input type="radio" name="category" value="mix" checked> Karışık</label>
+				<label class="category-label"><input type="radio" name="category" value="git"> Git</label>
+				<label class="category-label"><input type="radio" name="category" value="github"> GitHub</label>
+				<label class="category-label"><input type="radio" name="category" value="react"> React</label>
+				<label class="category-label"><input type="radio" name="category" value="javascript"> JavaScript</label>
+				<label class="category-label"><input type="radio" name="category" value="html"> HTML</label>
+				<label class="category-label"><input type="radio" name="category" value="css"> CSS</label>
+			</fieldset>
+
 			<button id="start-btn" class="btn">Quize Başla</button>
 		</section>
 
-			<section id="quiz-screen" class="hidden">
+		<section id="quiz-screen" class="hidden">
 			<div class="quiz-header-row">
 				<div class="quiz-progress" id="progress">Soru 1/10</div>
 			</div>
