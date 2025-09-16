@@ -243,6 +243,7 @@ body {
   min-height: 2.8em;           /* ~2 satır yüksekliği, kartlar dengeli dursun */
   display: -webkit-box;
   -webkit-line-clamp: 2;       /* en fazla 2 satır göster */
+  line-clamp: 2;               /* standart özellik */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

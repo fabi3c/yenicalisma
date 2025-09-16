@@ -102,6 +102,132 @@ const QUESTIONS = [
   ], answer: 1 },
 ];
 
+// Ek soru havuzu (Git & GitHub, Semantic Commits, Lifecycle, Memoization, Context, TS, Atomic Design)
+const EXTRA_QUESTIONS = [
+  // 1) Git & GitHub
+  { id: 'git-checkout-b', q: 'git checkout -b feature/login ne yapar?', options: [
+    'Yeni branch oluşturup ona geçer', 'Sadece yeni branch oluşturur', 'Sadece mevcut brancha geçer', 'Uzak branchi siler'
+  ], answer: 0 },
+  { id: 'merge-vs-rebase-basic', q: 'Merge vs Rebase için temel doğru ifade hangisi?', options: [
+    'Merge commitleri siler; rebase birleştirir', 'Merge iki dalı birleştirir, rebase commitleri yeni tabana taşıyarak lineer geçmiş oluşturur', 'İkisi de aynıdır', 'Rebase uzak depoda çalışır, merge yerelde'
+  ], answer: 1 },
+  { id: 'gitignore-node', q: 'Node.js projesinde node_modules klasörünü hariç tutmak için .gitignore satırı?', options: [
+    'node_modules/', 'modules.node', '*.node', '!node_modules/'
+  ], answer: 0 },
+  { id: 'gh-create-repo', q: 'GitHub’da yeni repo oluştururken hangisi yapılabilir?', options: [
+    'README, .gitignore ve lisans eklemek', 'Commit geçmişini içe aktarmak zorunlu', 'Ana branch adı değiştirilemez', 'Fork olmadan PR açılamaz'
+  ], answer: 0 },
+  { id: 'gh-open-pr-where', q: 'Pull Request nereden açılır?', options: [
+    'Repository sayfası > Pull requests > New pull request', 'Gists sayfası', 'Issues sekmesi', 'Settings > Branches'
+  ], answer: 0 },
+
+  // 2) Semantic Commit Messages (Conventional Commits)
+  { id: 'cc-valid-type', q: 'Aşağıdakilerden hangisi geçerli Conventional Commit türüdür?', options: [
+    'build', 'bugfix', 'hotfix', 'release'
+  ], answer: 0 },
+  { id: 'cc-format', q: 'Conventional Commit biçimi hangisi?', options: [
+    'type(scope): açıklama', 'scope:type - açıklama', '[type] açıklama', 'açıklama - type'
+  ], answer: 0 },
+  { id: 'cc-breaking', q: 'Breaking change nasıl belirtilir?', options: [
+    'feat!: API değişikliği', 'feat(!!): değişiklik', 'BREAK!: footer', 'feat: BREAK!'
+  ], answer: 0 },
+  { id: 'cc-fix-example', q: '“fix: profil görseli yükleme hatası düzeltildi” mesajı hangi türdür?', options: [
+    'fix', 'feat', 'docs', 'refactor'
+  ], answer: 0 },
+
+  // 3) React Lifecycle Hooks
+  { id: 'mount-effect', q: 'Functional bileşende componentDidMount eşdeğeri nedir?', options: [
+    'useEffect(() => {}, [dep])', 'useEffect(() => {}, [])', 'useLayoutEffect(() => {}, [dep])', 'useMemo(() => {}, [])'
+  ], answer: 1 },
+  { id: 'unmount-effect', q: 'Functional bileşende unmount anında temizlik nasıl yapılır?', options: [
+    'useCleanup()', 'useEffect(() => () => {/* cleanup */}, [])', 'componentWillUnmount', 'useRef()'
+  ], answer: 1 },
+  { id: 'update-effect', q: 'Belirli bir değere göre güncelleme sonrası çalışmak için?', options: [
+    'useEffect(() => { /* ... */ }, [dep])', 'useEffect(() => { /* ... */ }, [])', 'useMemo(() => dep, [])', 'componentDidUpdate()'
+  ], answer: 0 },
+  { id: 'class-mount-order', q: 'Class bileşenlerde mount sırası?', options: [
+    'render -> constructor -> componentDidMount', 'constructor -> render -> componentDidMount', 'componentDidMount -> render -> constructor', 'render -> componentDidMount -> constructor'
+  ], answer: 1 },
+
+  // 4) React Memorization
+  { id: 'react-memo', q: 'React.memo(Component) ne yapar?', options: [
+    'Bileşeni cacheleyip hiç güncellemez', 'Props değişmediği sürece yeniden render’ı atlar', 'State’i otomatik memoize eder', 'Sunucu tarafında render eder'
+  ], answer: 1 },
+  { id: 'useMemo', q: 'useMemo ne için uygundur?', options: [
+    'Event dinlemek', 'Pahalı hesaplamayı bağımlılıklar değişene kadar önbelleğe almak', 'State oluşturmak', 'Ref yaratmak'
+  ], answer: 1 },
+  { id: 'useCallback', q: 'useCallback ne işe yarar?', options: [
+    'Fonksiyonu çalıştırır', 'Fonksiyon referansını bağımlılıklara göre sabitler', 'Değeri cacheler', 'Router’ı değiştirir'
+  ], answer: 1 },
+  { id: 'memo-pitfall', q: 'Memoization ile ilgili doğru ifade?', options: [
+    'Her yerde kullanılmalı', 'Yanlış kullanılırsa gereksiz karmaşıklık yaratabilir', 'Performansı her zaman artırır', 'Sunucuda zorunludur'
+  ], answer: 1 },
+
+  // 5) Functional vs Class Components
+  { id: 'modern-prefer', q: 'Modern React’te tercih edilen bileşen türü?', options: [
+    'Class', 'Functional', 'Mixin', 'HOC tek başına'
+  ], answer: 1 },
+  { id: 'hooks-where', q: 'Hooklar nerede kullanılabilir?', options: [
+    'Sadece classlarda', 'Sadece fonksiyon bileşenlerinde ve custom hooklarda', 'Her yerde', 'Sadece testlerde'
+  ], answer: 1 },
+
+  // 6) Abstract Class Component (React)
+  { id: 'abstract-support', q: 'React’te abstract class desteği hakkında doğru ifade?', options: [
+    'JS’te doğrudan abstract yok; TS ile abstract class tanımlanabilir', 'React abstract anahtar kelimesi sağlar', 'Sadece mixin gerekir', 'Sadece interface yeterlidir'
+  ], answer: 0 },
+  { id: 'abstract-pattern', q: 'Soyut temel sınıf kalıbı için doğru ifade?', options: [
+    'BaseComponent içinde renderContent() soyut bırakılır ve alt sınıf uygular', 'render() her zaman soyut olmalı', 'Sadece HOC ile olur', 'Context ile aynı şeydir'
+  ], answer: 0 },
+
+  // 7) Context API
+  { id: 'context-create', q: 'Context nasıl oluşturulur?', options: [
+    'new Context()', 'React.createContext(varsayılan)', 'useContext()', 'createProvider()'
+  ], answer: 1 },
+  { id: 'context-provider', q: 'Değer nasıl sağlanır?', options: [
+    '<Provider value={...}>', '<Context value={...}>', '<Store value={...}>', '<Context.Provider() /> olmadan'
+  ], answer: 0 },
+  { id: 'context-consume', q: 'Context değeri nasıl tüketilir?', options: [
+    'useContext(MyContext)', 'useMemo(MyContext)', 'useRef(MyContext)', 'useId(MyContext)'
+  ], answer: 0 },
+  { id: 'context-usecase', q: 'Context tipik kullanım alanı?', options: [
+    'Tema/Kullanıcı/Dil bilgisi paylaşımı', 'Animasyon', 'CSS derleme', 'Webpack ayarı'
+  ], answer: 0 },
+
+  // 8) Type-Safe Coding (TypeScript)
+  { id: 'ts-type-interface', q: 'Interface hakkında doğru ifade?', options: [
+    'Declaration merging ile genişletilebilir', 'Union oluşturur', 'Yalnızca sınıflarda kullanılır', 'Tip kontrolü yapmaz'
+  ], answer: 0 },
+  { id: 'ts-union', q: 'Union type örneği?', options: [
+    'type Id = string | number', 'interface Id { string & number }', 'enum Id { String, Number }', 'let id: any | never'
+  ], answer: 0 },
+  { id: 'ts-unknown-any', q: 'unknown vs any için doğru ifade?', options: [
+    'unknown atanmadan önce daraltma gerektirir; any sınırsızdır', 'any daha güvenlidir', 'unknown her yerde hataya yol açar', 'İkisi de aynıdır'
+  ], answer: 0 },
+  { id: 'ts-never', q: 'never tipi neyi ifade eder?', options: [
+    'Her zaman null döner', 'Hiçbir zaman dönmeyen (throw/sonsuz döngü) fonksiyon tipi', 'Bilinmeyen tip', 'Boş dizi'
+  ], answer: 1 },
+  { id: 'ts-typeguard', q: 'Hangi ifade type guard’dır?', options: [
+    'typeof x === "string"', 'console.log(x)', 'Math.max()', 'JSON.parse()'
+  ], answer: 0 },
+  { id: 'ts-props', q: 'React’te props tipini tanımlama örneği?', options: [
+    'interface Props { title: string }', 'let Props = any', 'enum Props { title }', 'type Props = never'
+  ], answer: 0 },
+
+  // 9) Atomic Design Pattern
+  { id: 'atomic-order', q: 'Atomic Design katmanlarının doğru sırası?', options: [
+    'Atoms > Molecules > Organisms > Templates > Pages', 'Atoms > Organisms > Molecules > Pages > Templates', 'Pages > Templates > Organisms > Molecules > Atoms', 'Molecules > Atoms > Organisms > Pages > Templates'
+  ], answer: 0 },
+  { id: 'atomic-molecule', q: 'Molecule için doğru örnek?', options: [
+    'Button', 'Label + Input + ErrorMessage', 'Navbar', 'Sayfa şablonu'
+  ], answer: 1 },
+  { id: 'atomic-organism', q: 'Organism için doğru örnek?', options: [
+    'Input', 'Form veya Navbar gibi kompleks bileşen', 'Grid layout şablonu', 'Gerçek sayfa'
+  ], answer: 1 },
+  { id: 'atomic-template-vs-page', q: 'Template ile Page farkı?', options: [
+    'Template yerleşimi tanımlar; Page gerçek içerikle doldurur', 'Page şablondur; Template gerçek veridir', 'İkisi aynıdır', 'Sadece CSS ile ilgilidir'
+  ], answer: 0 },
+];
+
 // Yardımcılar
 const $ = (id) => document.getElementById(id);
 const LETTERS = ['A', 'B', 'C', 'D'];
@@ -113,6 +239,16 @@ const shuffle = (arr) => {
   }
   return a;
 };
+// 20 soru seç
+const QUIZ_SIZE = 20;
+
+// Yeni: her soru için şıkları karıştır ve doğru cevap indeksini güncelle
+function shuffleQuestion(q) {
+  const order = shuffle([0, 1, 2, 3]);              // 4 şık için permütasyon
+  const options = order.map(i => q.options[i]);     // gösterilecek sıradaki şıklar
+  const answer = order.indexOf(q.answer);           // yeni doğru indeks
+  return { ...q, options, answer };
+}
 
 // Durum
 let picked = [];
@@ -158,7 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function onStart() {
-  picked = shuffle(QUESTIONS).slice(0, Math.min(10, QUESTIONS.length));
+  // Havuz: mevcut + ek sorular, karıştır, 20 seç, her sorunun şıklarını da karıştır
+  const pool = QUESTIONS.concat(EXTRA_QUESTIONS);
+  picked = shuffle(pool)
+    .slice(0, Math.min(QUIZ_SIZE, pool.length))
+    .map(shuffleQuestion);
   current = 0;
   answers = Array(picked.length);
 
