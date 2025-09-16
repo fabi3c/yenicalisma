@@ -61,7 +61,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: .5px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Menü (liste) */
@@ -123,8 +123,22 @@ body {
   background: #2b2c2c;
     padding: 12px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 11px 6px rgba(0, 0, 0, 0.1);
     letter-spacing: 0.5px;
     font-family: var(--font-sans);
-
+    display: inline-block;
+    
 }
+
+/* Metin hizalama yardımcıları (yazının içeriğini hizalar) */
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* Kutu hizalama yardımcıları (öğenin kendisini taşır) */
+/* Not: p varsayılan olarak %100 genişlikte. Bu yardımcılar öğeyi içeriği kadar daraltıp hizalar. */
+.block-center { display: block; width: fit-content; margin-left: auto; margin-right: auto; }
+.block-right  { display: block; width: fit-content; margin-left: auto; }
+
+/* Örnek kullanım:
+<p class="yazi1 text
