@@ -1,0 +1,130 @@
+/* Temel sayfa ayarları */
+body {
+  background-color: #1a1a1a;
+  color: #eaeaea;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+/* Tema değişkenleri */
+:root {
+  --clr-primary: #3b82f6;
+  --clr-accent:  #f97316;
+  --clr-success: #22c55e;
+  --clr-warning: #eab308;
+  --clr-body:    #eaeaea;
+
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Yardımcı font sınıfları */
+.font-sans  { font-family: var(--font-sans); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono  { font-family: var(--font-mono); }
+
+/* Yardımcı renk sınıfları (metin rengi) */
+.text-primary { color: var(--clr-primary); }
+.text-accent  { color: var(--clr-accent); }
+.text-success { color: var(--clr-success); }
+.text-warning { color: var(--clr-warning); }
+.text-white   { color: #fff; }
+.text-muted   { color: #9ca3af; }
+
+/* Header ve nav yerleşimi */
+.site-header {
+  /* Hatalı background-position ve 'back' satırı kaldırıldı */
+  background: #121212;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.nav-container {
+  /* 500px border-bottom kaldırıldı; gölge sadeleştirildi */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+/* Menü (liste) */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; /* küçük ekranda satır kaydırır */
+}
+
+/* Menü linkleri */
+.menu-link {
+  color: #ffffff;  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: .6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: color .15s ease, background-color .15s ease;
+}
+
+.menu-link:hover,
+.menu-link:focus-visible {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  outline: none;
+}
+
+/* Aktif menü rengi değişkene bağlandı */
+.menu-link[aria-current="page"] {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
+/* Erişilebilir odak görünürlüğü */
+.menu-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59,130,246,.45);
+}
+
+/* İstersen tek tek öğeleri sınıfsız da seçebilirsin (örnek): */
+/*
+.menu li:nth-child(3) > a { color: var(--clr-success); }  // 3. öğe: Services
+.menu li:nth-child(4) > a { color: var(--clr-warning); }  // 4. öğe: Contact
+*/
+
+/* Responsive */
+@media (max-width: 600px) {
+  .logo { font-size: 20px; }
+  .menu-link { font-size: 13px; padding: 8px; }
+}
+
+.yazi1 {
+  color: #e2e8f0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  background: #2b2c2c;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+    font-family: var(--font-sans);
+
+}
