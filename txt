@@ -1,0 +1,654 @@
+/* Temel sayfa ayarları */
+body {
+  background-color: #1a1a1a;
+  color: #eaeaea;
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  margin: 0;
+}
+
+/* Tema değişkenleri */
+:root {
+  --clr-primary: #131111;
+  --clr-accent: #f97316;
+  --clr-success: #22c55e;
+  --clr-warning: #eab308;
+  --clr-body: #eaeaea;
+  --clr-danger: #ef4444; /* Blog için kırmızı */
+
+  --font-sans: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --surface-1: #181818;
+  --surface-2: #1f1f1f;
+  --border: rgba(255, 255, 255, 0.08);
+  --ring-accent: rgba(59, 130, 246, 0.35);
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Yoster font (TTF dosyası kök dizindeyse ../yoster.ttf, aynı klasördeyse yoster.ttf) */
+@font-face {
+  font-family: "Yoster";
+  src: url("../yoster.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Yardımcı font sınıfları */
+.font-sans {
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+}
+.font-serif {
+  font-family: var(--font-serif);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Yardımcı renk sınıfları (metin rengi) */
+.text-primary {
+  color: var(--clr-primary);
+}
+.text-accent {
+  color: var(--clr-accent);
+}
+.text-success {
+  color: var(--clr-success);
+}
+.text-warning {
+  color: var(--clr-warning);
+}
+.text-white {
+  color: #fff;
+}
+.text-muted {
+  color: #9ca3af;
+}
+.text-danger {
+  color: var(--clr-danger);
+}
+
+/* Header ve nav yerleşimi */
+.site-header {
+  /* Hatalı background-position ve 'back' satırı kaldırıldı */
+  background: #121212;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-container {
+  /* 500px border-bottom kaldırıldı; gölge sadeleştirildi */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* Menü (liste) */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; /* küçük ekranda satır kaydırır */
+}
+
+/* Menü linkleri */
+.menu-link {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.menu-link:hover,
+.menu-link:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+}
+
+/* Aktif menü rengi değişkene bağlandı */
+.menu-link[aria-current="page"] {
+  background: var(--clr-accent);
+  color: #111;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.35);
+}
+
+/* Erişilebilir odak görünürlüğü */
+.menu-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(68, 73, 81, 0.45);
+}
+
+/* İstersen tek tek öğeleri sınıfsız da seçebilirsin (örnek): */
+/*
+.menu li:nth-child(3) > a { color: var(--clr-success); }  // 3. öğe: Services
+.menu li:nth-child(4) > a { color: var(--clr-warning); }  // 4. öğe: Contact
+*/
+
+/* Responsive */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 20px;
+  }
+  .menu-link {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+
+.yazi1 {
+  color: #e2e8f0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  background: #2b2c2c;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 11px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  font-family: var(--font-sans);
+}
+
+/* Metin hizalama yardımcıları (yazının içeriğini hizalar) */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* Kutu hizalama yardımcıları (öğenin kendisini taşır) */
+/* Not: p varsayılan olarak %100 genişlikte. Bu yardımcılar öğeyi içeriği kadar daraltıp hizalar. */
+.block-center {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.block-right {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.divabi {
+  background: #2b2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 15px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.7px;
+  font-family: var(--font-sans);
+  display: inline-block;
+  color: #e2e8f0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: rgb(12, 124, 86);
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: rgb(10, 102, 71);
+  box-shadow: 0 0 0 3px rgba(12, 124, 86, 0.45);
+  outline: none;
+}
+
+.kedifoto {
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Kedi galerisi yerleşimi */
+.gallery {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px; /* eşit aralık */
+}
+
+/* Galeri görselleri: tek kural, optimize */
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* kart oranı; tutarlı yükseklik */
+  object-fit: cover; /* görseli kırpıp doldur */
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+/* Kart kapları */
+.gallery .cat-card {
+  background: #181818;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 8px;
+  overflow: hidden; /* hover büyümesini kart içinde tutar */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Resim: mevcut .gallery img kuralları geçerli; köşe yarıçapını karta uydur */
+.gallery .cat-card img {
+  border-radius: 8px;
+}
+
+/* Başlık (söz) */
+.gallery .cat-card figcaption {
+  font-size: 13px;
+  color: #cbd5e1;
+  text-align: center;
+  line-height: 1.4;
+  min-height: 2.8em; /* ~2 satır yüksekliği, kartlar dengeli dursun */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* en fazla 2 satır göster */
+  line-clamp: 2; /* standart özellik */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hover: kartın herhangi bir yerinde çalışsın */
+.gallery .cat-card:hover img {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Hover efekti: hafif büyüt, akıcı */
+.gallery img:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Hareket azaltma tercihi */
+@media (prefers-reduced-motion: reduce) {
+  .gallery img {
+    transition: none;
+  }
+  .gallery img:hover {
+    transform: none;
+  }
+}
+
+/* Yardımcı: gizle */
+.hidden {
+  display: none;
+}
+
+/* Quiz yerleşimi (dar kapsamlı) */
+.quiz-container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.quiz-title {
+  margin: 12px 0;
+}
+.quiz-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 18px;
+  font-family: "Yoster", system-ui, sans-serif;
+}
+
+.quiz-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+.quiz-progress {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: #cbd5e1;
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.question-card {
+  background: linear-gradient(180deg, var(--surface-2), #171717);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.question-text {
+  font-size: 19px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.35;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); /* 2+ kolon, ekrana göre */
+  gap: 12px;
+}
+
+.option-btn {
+  display: grid;
+  grid-template-columns: 36px 1fr; /* sol rozet + metin */
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #222, #1c1c1c);
+  color: #eaeaea;
+  cursor: pointer;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.12s ease, border-color 0.18s ease;
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  letter-spacing: 0.4px; /* çok hafif boşluk */
+}
+
+.option-btn > strong {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(249, 115, 22, 0.35); /* accent’in yumuşak tonu */
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.option-btn > span {
+  line-height: 1.35;
+  color: #e5e7eb;
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  letter-spacing: 0.4px;
+  line-height: 1.32;
+}
+
+.option-btn:hover {
+  background: linear-gradient(180deg, #262626, #202020);
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+.option-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring-accent);
+  border-color: var(--ring-accent);
+}
+.option-btn:active {
+  transform: translateY(0); /* hover’daki -1px’i geri al */
+}
+
+.option-btn.selected {
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.18),
+    rgba(59, 130, 246, 0.1)
+  );
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.22);
+}
+.option-btn.selected > strong {
+  background: var(--clr-accent);
+  border-color: transparent;
+  color: #111;
+  letter-spacing: 0.4px;
+}
+
+.quiz-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-secondary {
+  background-color: #374151;
+}
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: #2b3440;
+  box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.45);
+}
+
+/* Sonuç listesi */
+.result-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+.result-list li {
+  margin: 6px 0;
+}
+.result-list li.correct {
+  color: var(--clr-success);
+}
+.result-list li.wrong {
+  color: var(--clr-danger);
+}
+.quiz-score {
+  margin: 8px 0 12px;
+  font-weight: 600;
+}
+
+/* Küçük ekran */
+@media (max-width: 520px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+  .option-btn {
+    grid-template-columns: 32px 1fr;
+    padding: 10px 12px;
+  }
+  .option-btn > strong {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+/* Category selector (chips) */
+.category-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.category-legend {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0 0 6px;
+  width: 100%;
+}
+.category-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #222, #1b1b1b);
+  border: 1px solid var(--border);
+  color: #e5e7eb;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.12s ease, border-color 0.18s ease;
+}
+.category-label:hover {
+  background: linear-gradient(180deg, #262626, #202020);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+.category-label:active {
+  transform: translateY(0);
+}
+.category-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  pointer-events: none;
+}
+.category-label:has(input[type="radio"]:checked) {
+  background: linear-gradient(
+    180deg,
+    rgba(249, 115, 22, 0.92),
+    rgba(249, 115, 22, 0.78)
+  );
+  color: #111;
+  border-color: rgba(249, 115, 22, 0.95);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+}
+.category-label:has(input[type="radio"]:focus-visible) {
+  box-shadow: 0 0 0 3px var(--ring-accent);
+  border-color: var(--ring-accent);
+}
+
+/* Small screens: make chips full width if needed */
+@media (max-width: 520px) {
+  .category-fieldset {
+    gap: 8px;
+  }
+  .category-label {
+    padding: 8px 10px;
+  }
+}
+
+/* Count row and input */
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+.count-input {
+  width: 96px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #222, #1b1b1b);
+  color: #e5e7eb;
+}
+.count-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring-accent);
+  border-color: var(--ring-accent);
+}
+
+.quiz-container {
+  font-size: 15px;
+  padding: 10px 18px;
+  line-height: 1.5;
+  color: #22c55e;
+}
+
+.quiz-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 18px;
+  font-family: "Yoster", system-ui, sans-serif;
+}
+
+/* Quiz tipografisi: soru + şıklar aynı font ve hafif aralık */
+.question-text,
+.option-btn,
+.option-btn > span,
+.option-btn > strong {
+  font-family: "Yoster", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  letter-spacing: 0.4px; /* çok hafif boşluk */
+}
+
+.question-text {
+  /* ...existing code... */
+  letter-spacing: 0.5px;
+  line-height: 1.35;
+}
+
+.option-btn > span {
+  /* ...existing code... */
+  letter-spacing: 0.4px;
+  line-height: 1.32;
+}
+
+.option-btn > strong {
+  /* ...existing code... */
+  letter-spacing: 0.4px;
+}
+
+/* Seçilmiş şıkta rozet fontu aynı kalsın */
+.option-btn.selected > strong {
+  /* ...existing code... */
+  letter-spacing: 0.4px;
+}
+
+.quiz-container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
