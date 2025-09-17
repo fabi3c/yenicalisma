@@ -101,7 +101,7 @@ const QUESTIONS = [
     'Stil için', 'Performans/doğru yeniden kullanım için', 'SEO için', 'Router için'
   ], answer: 1 },
 ];
-  
+
 // Ek soru havuzu (Git & GitHub, Semantic Commits, Lifecycle, Memoization, Context, TS, Atomic Design)
 const EXTRA_QUESTIONS = [
   // 1) Git & GitHub
@@ -245,6 +245,135 @@ const ADDITIONAL_JS = [
   { id: 'js-promise', q: 'Promise.resolve(1).then(x => x+1).then(console.log) çıktısı?', options: [
     '1', '2', 'undefined', 'Promise'
   ], answer: 1 },
+  { id: 'js-hoisting', q: 'Hoisting hakkında doğru ifade?', options: [
+    'var ve function declaration tanımları yukarı kaldırılır',
+    'let/const için hoisting yoktur ve her zaman erişilebilir',
+    'Hiçbir bildirim hoist olmaz',
+    'Sadece const hoist olur'
+  ], answer: 0 },
+  { id: 'js-scope', q: 'Aşağıdakilerden hangisi doğrudur?', options: [
+    'var blok kapsamına sahiptir',
+    'let/const fonksiyon kapsamına sahiptir',
+    'var fonksiyon kapsamlıdır; let/const blok kapsamlıdır',
+    'Hepsi globaldir'
+  ], answer: 2 },
+  { id: 'js-this-arrow', q: 'Arrow function’da this nasıl belirlenir?', options: [
+    'Çağırana göre dinamik',
+    'new ile her zaman global',
+    'Lexical (çevresel bağlamdan alınır)',
+    'Her zaman undefined'
+  ], answer: 2 },
+  { id: 'js-prototype-new', q: 'new ile üretilen nesnenin prototipi için doğru ifade?', options: [
+    'instance.__proto__ === Constructor.prototype',
+    'instance.prototype === Constructor.__proto__',
+    'Constructor.__proto__ === instance',
+    'Object.prototype === null'
+  ], answer: 0 },
+  { id: 'js-array-map', q: 'Array.prototype.map ne döner?', options: [
+    'Orijinal diziyi değiştirir',
+    'Aynı uzunlukta yeni bir dizi döner',
+    'Tek bir değer döner',
+    'Iterator döner'
+  ], answer: 1 },
+  { id: 'js-array-reduce', q: 'Array.prototype.reduce ne için kullanılır?', options: [
+    'Dizi öğelerini tek bir değere indirgemek',
+    'Dizi öğelerini filtrelemek',
+    'Diziyi kopyalamak',
+    'Diziyi sıralamak'
+  ], answer: 0 },
+  { id: 'js-event-flow', q: 'Event capturing ve bubbling hakkında doğru ifade?', options: [
+    'Capturing içten dışa; bubbling dıştan içe',
+    'Capturing dıştan içe; bubbling içten dışa',
+    'İkisi de içten dışa',
+    'İkisi de dıştan içe'
+  ], answer: 1 },
+  { id: 'js-nullish', q: 'Nullish coalescing (??) ile OR (||) farkı?', options: [
+    '|| sadece null/undefined için çalışır',
+    '?? tüm falsy değerler için çalışır',
+    '?? sadece null/undefined için devreye girer; || tüm falsy değerlerde',
+    'İkisi tamamen aynıdır'
+  ], answer: 2 },
+  { id: 'js-optional-chaining', q: 'Optional chaining operatörü hangisidir?', options: [
+    '?.', '??', '::', '=>'
+  ], answer: 0 },
+  { id: 'js-spread-rest', q: 'Spread ve Rest için doğru ifade?', options: [
+    'Spread kalanları toplar; Rest yayar',
+    'Spread yayar; Rest kalanları toplar',
+    'İkisi de sadece nesnede çalışır',
+    'İkisi de sadece dizide çalışır'
+  ], answer: 1 },
+  { id: 'js-iife', q: 'IIFE nedir?', options: [
+    'Yavaş çalışan fonksiyon',
+    'Kendini hemen çalıştıran fonksiyon ifadesi',
+    'Async fonksiyon',
+    'Generator fonksiyon'
+  ], answer: 1 },
+  { id: 'js-pure-fn', q: 'Saf (pure) fonksiyon için doğru ifade?', options: [
+    'Yan etkisi yoktur, aynı girdiye aynı çıktıyı üretir',
+    'Her zaman global durumu değiştirir',
+    'Rastgele çıktı üretir',
+    'DOM’u değiştirir'
+  ], answer: 0 },
+  { id: 'js-copy', q: 'Shallow vs deep copy hakkında doğru ifade?', options: [
+    'Shallow tüm derinliği kopyalar',
+    'Deep referansları paylaşır',
+    'Shallow üst seviyeyi kopyalar, iç referanslar paylaşılabilir',
+    'İkisi de aynıdır'
+  ], answer: 2 },
+  { id: 'js-microtask', q: 'Promise.then ve setTimeout zamanlaması için doğru ifade?', options: [
+    'setTimeout önce, then sonra',
+    'then microtask’tır ve setTimeout’tan önce çalışır',
+    'İkisi eşzamanlıdır',
+    'Tarayıcıya göre değişir ve garantisi yoktur'
+  ], answer: 1 },
+  { id: 'js-tdz', q: 'Temporal Dead Zone (TDZ) nedir?', options: [
+    'var değişkenlerinin hatası',
+    'let/const bildirimi yapılana kadar erişilemeyen dönem',
+    'Event loop durması',
+    'GC tarafından silinme anı'
+  ], answer: 1 },
+  { id: 'js-bind-call-apply', q: 'bind, call ve apply için doğru ifade?', options: [
+    'bind anında çağırır; call yeni fonksiyon döner',
+    'call argümanları diziyle alır; apply tek tek alır',
+    'bind yeni fonksiyon döndürür; call/apply anında çağırır',
+    'Üçü de aynıdır'
+  ], answer: 2 },
+  { id: 'js-loop-closure', q: 'for döngüsünde closure ve var/let için doğru ifade?', options: [
+    'var her iterasyonda yeni bağlam oluşturur',
+    'let tek bağlam paylaşır',
+    'var tek bağlam paylaşır; let her iterasyonda ayrı bağlam oluşturur',
+    'İkisi de aynı davranır'
+  ], answer: 2 },
+  { id: 'js-obj-eq', q: 'Aşağıdakilerden hangisi doğrudur?', options: [
+    '{} === {} true’dur',
+    'İki farklı nesne referansı eşit değildir',
+    'Nesneler === ile her zaman eşittir',
+    'Nesneler == ile her zaman eşittir'
+  ], answer: 1 },
+  { id: 'js-nan', q: 'NaN === NaN sonucu nedir?', options: [
+    'true', 'false', 'undefined', 'TypeError'
+  ], answer: 1 },
+  { id: 'js-typeof-null', q: 'typeof null sonucu nedir?', options: [
+    '"null"', '"object"', '"undefined"', '"number"'
+  ], answer: 1 },
+  { id: 'js-falsy', q: 'Aşağıdakilerden hangileri falsy’dir?', options: [
+    '0, "", null, undefined, NaN, false',
+    '[], {}, "0", true',
+    '1, " ", [], {}',
+    'Infinity, -1, "false"'
+  ], answer: 0 },
+  { id: 'js-promise-states', q: 'Promise durumları hangi seçenekte doğru?', options: [
+    'started, done, failed',
+    'pending, fulfilled, rejected',
+    'open, closed, error',
+    'idle, running, stopped'
+  ], answer: 1 },
+  { id: 'js-async-await-err', q: 'async/await ile hata yakalama için doğru yaklaşım?', options: [
+    'await her zaman hataları yutar',
+    'try/catch ile await edilen reddedilen promise yakalanabilir',
+    'Sadece then/catch kullanılabilir',
+    'throw kullanılamaz'
+  ], answer: 1 }
 ];
 
 const ADDITIONAL_HTML = [
@@ -283,6 +412,188 @@ const ADDITIONAL_CSS = [
   ], answer: 0 },
 ];
 
+const ADDITIONAL_STANDARDS = [
+  // Politikalar / Akış
+  { id: 'std-main-push', q: 'main branch\'ine doğrudan push hakkında doğru ifade?', options: [
+    'Serbesttir', 'Sadece force push yasaktır', 'Tamamen yasaktır, PR ile ilerlenir', 'Sadece hafta içi serbest'
+  ], answer: 2 },
+  { id: 'pr-required', q: 'Değişiklikler nasıl ana koda dahil edilmelidir?', options: [
+    'Doğrudan main\'e push', 'Forksuz PR', 'Pull Request açıp onay alarak', 'Tag atarak'
+  ], answer: 2 },
+  { id: 'branch-from-main', q: 'Yeni bir işe başlarken hangi dal baz alınmalı?', options: [
+    'main', 'rastgele bir branch', 'HEAD~1', 'release'
+  ], answer: 0 },
+  { id: 'commit-small', q: 'Commit sıklığı için öneri nedir?', options: [
+    'Büyük ve seyrek', 'Küçük ve sık', 'Tek commit', 'Sadece release öncesi'
+  ], answer: 1 },
+  { id: 'pr-self-review', q: 'PR açmadan önce hangi adım önerilir?', options: [
+    'Direkt merge', 'Self-review yapıp sonra "Ready for Review"', 'Tag oluşturma', 'Squash etme'
+  ], answer: 1 },
+
+  // Semantic Commit Messages
+  { id: 'cc-format-std', q: 'Semantic commit biçimi hangisi?', options: [
+    'type(scope): açıklama', 'scope:type - açıklama', '[type] açıklama', 'type:scope açıklama'
+  ], answer: 0 },
+  { id: 'cc-imperative', q: 'Commit açıklaması hangi kipte olmalı?', options: [
+    'Geçmiş zaman', 'Gelecek zaman', 'Emir kipinde/şimdiki zaman', 'Rastgele'
+  ], answer: 2 },
+  { id: 'cc-scope-opt', q: 'Commit scope alanı için doğru ifade?', options: [
+    'Zorunlu', 'Opsiyonel ama faydalı', 'Yasak', 'Sadece testlerde'
+  ], answer: 1 },
+  { id: 'cc-types', q: 'Aşağıdakilerden hangisi önerilen commit türlerinden değildir?', options: [
+    'feat', 'fix', 'refactor', 'change'
+  ], answer: 3 },
+  { id: 'cc-issues', q: 'İlgili issue nasıl referanslanır?', options: [
+    'Başlıkta', 'Açıklamada link', 'Footer\'da Closes #123 gibi', 'Tag atarak'
+  ], answer: 2 },
+  { id: 'cc-breaking-footer', q: 'Breaking change bildirimi nereye yazılır?', options: [
+    'Başlığa', 'Scope alanına', 'Footer\'a "BREAKING CHANGE:" ile', 'Body\'ye herhangi yere'
+  ], answer: 2 },
+  { id: 'cc-bad-vague', q: 'Kötü örnek hangisi?', options: [
+    'feat(ui): add dark mode toggle', 'fix(api): handle null values', 'refactor(user): simplify logic', 'update: change some stuff'
+  ], answer: 3 },
+  { id: 'cc-single-unit', q: 'Commit’ler nasıl olmalı?', options: [
+    'Birden fazla konuyu birleştirmeli', 'Tek bir anlamlı işi temsil etmeli', 'Sadece stil değişiklikleri olmalı', 'Ne olursa olsun tek commit'
+  ], answer: 1 },
+
+  // Merge Stratejileri
+  { id: 'merge-commit', q: 'Merge commit stratejisinin özelliği?', options: [
+    'Tüm commitleri tek committe birleştirir', 'Lineer tarih oluşturur', 'Birleştirme commitini koruyarak tarihi muhafaza eder', 'Remote geçmişini siler'
+  ], answer: 2 },
+  { id: 'merge-squash', q: 'Squash and Merge ne yapar?', options: [
+    'Branchi siler', 'Tüm commitleri tek commit olarak birleştirir', 'Rebase yapar', 'Tag ekler'
+  ], answer: 1 },
+  { id: 'merge-rebase', q: 'Rebase and Merge sonucu?', options: [
+    'Merge commit oluşur', 'Lineer geçmiş (D\', E\') oluşur', 'Commitler kaybolur', 'Sadece tagler taşınır'
+  ], answer: 1 },
+  { id: 'merge-preferred', q: 'Tercih edilen strateji (belirtildiği gibi)?', options: [
+    'Merge commit', 'Squash and Merge', 'Rebase and Merge', 'Hepsi yasak'
+  ], answer: 1 },
+
+  // SemVer
+  { id: 'semver-pattern', q: 'SemVer deseni nedir?', options: [
+    'MAJOR.MINOR.PATCH', 'MAJOR.PATCH.MINOR', 'PATCH.MINOR.MAJOR', 'vMAJOR-PATCH'
+  ], answer: 0 },
+  { id: 'semver-major', q: 'Hangi durumda MAJOR artar?', options: [
+    'Geriye dönük uyumlu özellik', 'Dokümantasyon değişikliği', 'Geriye dönük uyumsuz değişiklik', 'Hata düzeltmesi'
+  ], answer: 2 },
+  { id: 'semver-minor', q: 'MINOR artışı neyi ifade eder?', options: [
+    'Uyumsuzluk', 'Geriye uyumlu yeni özellik', 'Hata düzeltmesi', 'Performans düşüşü'
+  ], answer: 1 },
+  { id: 'semver-patch', q: 'PATCH artışı neyi ifade eder?', options: [
+    'Hata düzeltmesi (geri uyumlu)', 'Yeni özellik', 'Docs', 'Uyumsuz değişiklik'
+  ], answer: 0 },
+
+  // Diğer iyi uygulamalar
+  { id: 'docs-readme-template', q: 'README şablonu kullanmanın faydası?', options: [
+    'Onboarding’i hızlandırır', 'Commit sayısını azaltır', 'Git gereksizdir', 'PR sayısını kısıtlar'
+  ], answer: 0 },
+];
+
+// Yeni: Component Architecture / Best Practices soru havuzu
+const ADDITIONAL_ARCH = [
+  // Atomic Design ve yerleşim
+  { id: 'arch-reusable-only', q: 'Atomic klasörlerine hangi bileşenler konmalıdır?', options: [
+    'Sadece sayfaya özel bileşenler', 'Her oluşturulan bileşen', 'Uygulama genelinde tekrar kullanılabilen bileşenler', 'Sadece 3. parti bileşenler'
+  ], answer: 2 },
+  { id: 'arch-feature-local', q: 'Yalnızca LandingPage içinde kullanılan bileşen nereye konmalı?', options: [
+    'atoms/', 'organisms/', 'src/landing/components/', 'pages/'
+  ], answer: 2 },
+
+  // Naming
+  { id: 'naming-component-pascal', q: 'React bileşen isim standardı nedir?', options: [
+    'snake_case', 'kebab-case', 'camelCase', 'PascalCase'
+  ], answer: 3 },
+  { id: 'naming-folder-kebab', q: 'Klasör isim standardı nedir?', options: [
+    'PascalCase', 'kebab-case', 'SCREAMING_SNAKE', 'camelCase'
+  ], answer: 1 },
+  { id: 'naming-props-camel', q: 'Props ve state isimlendirmesi için öneri?', options: [
+    'PascalCase', 'camelCase', 'kebab-case', 'SCREAMING_SNAKE'
+  ], answer: 1 },
+  { id: 'naming-bool-prefix', q: 'Boolean prop isimleri nasıl başlamalı?', options: [
+    'get', 'set', 'is/has/should', 'on'
+  ], answer: 2 },
+  { id: 'naming-const', q: 'Sabitler için stil?', options: [
+    'camelCase', 'PascalCase', 'kebab-case', 'ALL_CAPS_SNAKE_CASE'
+  ], answer: 3 },
+  { id: 'events-prefix-handle', q: 'Olay yakalayıcı fonksiyonlar için tavsiye edilen önek?', options: [
+    'on', 'do', 'handle', 'exec'
+  ], answer: 2 },
+  { id: 'hooks-naming', q: 'Custom hook isimlendirmesi nasıl olmalı?', options: [
+    'use + PascalCase', 'get + camelCase', 'PascalCase', 'snake_case'
+  ], answer: 0 },
+
+  // State Management
+  { id: 'state-useReducer', q: 'Karmaşık state yönetimi için hangisi tercih edilir?', options: [
+    'useState', 'useReducer', 'useRef', 'useMemo'
+  ], answer: 1 },
+  { id: 'state-global-choice', q: 'Karmaşık global durumlar için önerilen seçenek?', options: [
+    'Sadece Context', 'URL parametreleri', 'Redux/Zustand gibi kütüphaneler', 'LocalStorage'
+  ], answer: 2 },
+
+  // Context Optimization
+  { id: 'ctx-partition', q: 'Context güncellemelerinde gereksiz renderları azaltmak için?', options: [
+    'Tek büyük context kullanmak', 'Context’i parçalara bölmek', 'Prop drilling yapmak', 'useRef ile sarmak'
+  ], answer: 1 },
+  { id: 'ctx-combined-provider', q: 'Nested provider hiyerarşisini sadeleştirmek için?', options: [
+    'Tümü kaldırılır', 'CombinedProvider ile grupla', 'Sadece tek provider bırak', 'Context’i durdur'
+  ], answer: 1 },
+  { id: 'ctx-selector', q: 'Context’te ince taneli abonelik için kütüphane?', options: [
+    'use-context-selector', 'react-router', 'immer', 'clsx'
+  ], answer: 0 },
+  { id: 'ctx-avoid-heavy', q: 'Performans kritik listelerde context yerine ne önerilir?', options: [
+    'Context doğrudan tüketimi', 'Her item’da useContext', 'Veriyi üstten prop olarak geçirmek', 'Global değişken'
+  ], answer: 2 },
+  { id: 'ctx-batching', q: 'Birden çok context değerini güncellerken tavsiye?', options: [
+    'Ayrı ayrı eventlerde çağır', 'Batching ile tek handler’da güncelle', 'Senkron beklet', 'Her set’ten sonra zorla render'
+  ], answer: 1 },
+  { id: 'ctx-lazy-init', q: 'Pahalı ilk değer üretimi için uygun yaklaşım?', options: [
+    'useState’e fonksiyon vererek lazy init', 'Render içinde hesapla', 'Her render’da fetch', 'Global değişken ata'
+  ], answer: 0 },
+
+  // Hooks
+  { id: 'hooks-encapsulate', q: 'Karmaşık tekrar kullanılabilir iş mantığı nereye taşınmalı?', options: [
+    'Component body', 'Custom hook içine', 'Global scope', 'CSS dosyası'
+  ], answer: 1 },
+  { id: 'hooks-compose', q: 'Hook kompozisyonu ile ilgili doğru ifade?', options: [
+    'Hooklar birleşmez', 'Hooklar küçük hooklardan compose edilebilir', 'Sadece tek hook olmalı', 'Sadece class’ta mümkündür'
+  ], answer: 1 },
+
+  // Suspense & Code Splitting
+  { id: 'suspense-lazy', q: 'Bileşenleri ihtiyaç halinde yüklemek için önerilen yaklaşım?', options: [
+    'React.lazy + Suspense', 'Webpack externals', 'SSR zorunlu', 'Iframe ile yükle'
+  ], answer: 0 },
+  { id: 'suspense-data', q: 'Suspense ile veri çekme için doğru ifade?', options: [
+    'Sadece class’larda çalışır', 'React Query/Relay/SWR gibi araçlarla birlikte kullanılabilir', 'UseEffect yerine geçer', 'Tarayıcıda desteklenmez'
+  ], answer: 1 },
+
+  // Caching
+  { id: 'cache-expensive', q: 'Pahalı hesaplamaları yeniden hesaplamayı önlemek için?', options: [
+    'useMemo', 'useRef', 'useEffect', 'useLayoutEffect'
+  ], answer: 0 },
+
+  // Error Boundaries
+  { id: 'error-boundary', q: 'Error Boundary hangi yapıyla uygulanır?', options: [
+    'Fonksiyon bileşen + useEffect', 'Class bileşen + componentDidCatch', 'Context Provider', 'Service Worker'
+  ], answer: 1 },
+
+  // Performance
+  { id: 'perf-virtualization', q: 'Büyük listelerde virtualization için önerilen kütüphane?', options: [
+    'react-window', 'redux-saga', 'axios', 'formik'
+  ], answer: 0 },
+  { id: 'perf-debounce', q: 'Arama veya resize gibi olaylarda performans için?', options: [
+    'Her değişimde setState', 'Throttle/Debounce kullanmak', 'Sabit 60fps loop', 'Inline script'
+  ], answer: 1 },
+
+  // Coding Quality
+  { id: 'quality-no-dup-state', q: 'Aynı state’i birden fazla context veya component içinde kopyalamaktan kaçınma ilkesi?', options: [
+    'KISS', 'DRY', 'YAGNI', 'WET'
+  ], answer: 1 },
+  { id: 'quality-no-dup-fn', q: 'Aynı yardımcı fonksiyonun farklı yerlerde tekrarlanmasını önlemek için?', options: [
+    'Her dosyada yeniden yaz', 'Kopyala-yapıştır', 'Ortak yardımcı/namespace’e çıkar', 'Global window’a ekle'
+  ], answer: 2 },
+];
+
 // Havuzları birleştir ve kategorize et
 const QUIZ_SIZE = 20;
 const ALL_POOL = () => [
@@ -291,6 +602,8 @@ const ALL_POOL = () => [
   ...ADDITIONAL_JS,
   ...ADDITIONAL_HTML,
   ...ADDITIONAL_CSS,
+  ...ADDITIONAL_STANDARDS,
+  ...ADDITIONAL_ARCH,
 ];
 
 // Yardımcı: id prefix kontrolü
@@ -315,11 +628,17 @@ function buildBank() {
   ]);
 
   const bank = {
-    git: all.filter(q => idStarts(['git-'], q.id) || gitIdsExtra.has(q.id)),
-    github: all.filter(q => idStarts(['gh-'], q.id)),
+    git: all.filter(q =>
+      idStarts(['git-','cc-','branch-','commit-','merge-','semver-','std-'], q.id) ||
+      gitIdsExtra.has(q.id)
+    ),
+    github: all.filter(q => idStarts(['gh-','pr-'], q.id)),
     react: all.filter(q =>
-      idStarts(['react-','jsx-','state-','useState','useEffect','list-key'], q.id) ||
-      reactExtras.has(q.id)
+      idStarts(
+        ['react-','jsx-','state-','useState','useEffect','list-key',
+         'arch-','naming-','ctx-','hooks-','suspense-','error-','perf-','quality-'],
+        q.id
+      ) || reactExtras.has(q.id)
     ),
     javascript: all.filter(q => idStarts(['js-','ts-'], q.id)),
     html: all.filter(q => idStarts(['html-'], q.id)),
@@ -329,7 +648,7 @@ function buildBank() {
   return bank;
 }
 
-// Yardımcılar
+// Yardımcılar ve durum + DOM + olaylar (geri eklendi)
 const $ = (id) => document.getElementById(id);
 const LETTERS = ['A', 'B', 'C', 'D'];
 const shuffle = (arr) => {
@@ -341,26 +660,27 @@ const shuffle = (arr) => {
   return a;
 };
 
-// Yeni: her soru için şıkları karıştır ve doğru cevap indeksini güncelle
+// Şıkları karıştır
 function shuffleQuestion(q) {
-  const order = shuffle([0, 1, 2, 3]);              // 4 şık için permütasyon
-  const options = order.map(i => q.options[i]);     // gösterilecek sıradaki şıklar
-  const answer = order.indexOf(q.answer);           // yeni doğru indeks
+  const order = shuffle([0, 1, 2, 3]);
+  const options = order.map(i => q.options[i]);
+  const answer = order.indexOf(q.answer);
   return { ...q, options, answer };
 }
 
 // Durum
 let picked = [];
 let current = 0;
-let answers = []; // her soru için seçilen index (0..3) veya undefined
+let answers = [];
 
-// DOM
+// DOM ref’leri
 let startBtn, nextBtn, finishBtn, restartBtn;
 let startScreen, quizScreen, resultScreen;
 let questionEl, optionsEl, progressEl, scoreEl, resultListEl;
+let countInput, countHelp;
 
-// Başlat
-document.addEventListener('DOMContentLoaded', () => {
+// Başlatıcı
+function init() {
   // Elemanlar
   startBtn = $('start-btn');
   nextBtn = $('next-btn');
@@ -377,11 +697,36 @@ document.addEventListener('DOMContentLoaded', () => {
   scoreEl = $('score');
   resultListEl = $('result-list');
 
-  // Olaylar
+  countInput = $('question-count');
+  countHelp = $('count-help');
+
+  // Kategori değişimi: artık checkbox çoklu seçim
+  document.querySelectorAll('input[name="category"]').forEach(input => {
+    input.addEventListener('change', handleCategoryChange);
+  });
+
+  // Sayı girişini 1..max aralığına sıkıştır
+  const clampCountInput = () => {
+    if (!countInput) return;
+    const max = Number(countInput.max || '1');
+    let v = parseInt(countInput.value || '0', 10);
+    if (!Number.isFinite(v)) v = 1;
+    v = Math.max(1, Math.min(max, v));
+    countInput.value = String(v);
+  };
+  if (countInput) {
+    countInput.addEventListener('input', clampCountInput);
+    countInput.addEventListener('change', clampCountInput);
+    countInput.addEventListener('blur', clampCountInput);
+  }
+
+  // Buton olayları
   if (startBtn) startBtn.addEventListener('click', onStart);
   if (nextBtn) nextBtn.addEventListener('click', onNext);
   if (finishBtn) finishBtn.addEventListener('click', onFinish);
   if (restartBtn) restartBtn.addEventListener('click', onRestart);
+
+  // Şık tıklama
   if (optionsEl) {
     optionsEl.addEventListener('click', (e) => {
       const btn = e.target.closest('.option-btn');
@@ -390,25 +735,109 @@ document.addEventListener('DOMContentLoaded', () => {
       onSelect(idx);
     });
   }
-});
 
-// onStart: seçilen kategoriye göre havuz hazırla
-function onStart() {
-  const selectedInput = document.querySelector('input[name="category"]:checked');
-  const category = selectedInput ? selectedInput.value : 'mix';
+  // İlk yükleme
+  updateCountUI();
+}
 
-  const bank = buildBank();
-  let pool;
-  if (category === 'mix') {
-    pool = ALL_POOL();
+/* --- Yeni yardımcılar (çoklu kategori) --- */
+function getSelectedCategories() {
+  const checked = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+    .map(i => i.value);
+  // Hiç yoksa mix’e dön
+  if (checked.length === 0) return ['mix'];
+  // mix varsa tek olsun
+  if (checked.includes('mix')) return ['mix'];
+  return checked;
+}
+
+function handleCategoryChange(e) {
+  const changed = e.target;
+  const mixInput = document.querySelector('input[name="category"][value="mix"]');
+  if (changed.value === 'mix') {
+    if (changed.checked) {
+      // Diğerlerini kaldır
+      document.querySelectorAll('input[name="category"]').forEach(i => {
+        if (i !== changed) i.checked = false;
+      });
+    } else {
+      // Mix kaldırıldı ve başka yoksa tekrar aç
+      const anyOther = Array.from(document.querySelectorAll('input[name="category"]'))
+        .some(i => i.value !== 'mix' && i.checked);
+      if (!anyOther) changed.checked = true;
+    }
   } else {
-    pool = bank[category] || ALL_POOL();
+    // Diğer bir kategori seçildiyse mix’i kapat
+    if (changed.checked && mixInput && mixInput.checked) {
+      mixInput.checked = false;
+    }
+    // Hepsi kaldırıldıysa mix’i aç
+    const othersChecked = Array.from(document.querySelectorAll('input[name="category"]'))
+      .some(i => i.value !== 'mix' && i.checked);
+    if (!othersChecked && mixInput && !mixInput.checked) {
+      mixInput.checked = true;
+    }
   }
+  updateCountUI();
+}
 
-  // 20 soru seç, her birinde şıkları karıştır
-  picked = shuffle(pool)
-    .slice(0, Math.min(QUIZ_SIZE, pool.length))
-    .map(shuffleQuestion);
+/* Havuz birleştirme */
+function buildSelectedPool(selected, bank) {
+  if (selected.length === 1 && selected[0] === 'mix') {
+    return ALL_POOL();
+  }
+  const combined = [];
+  const seen = new Set();
+  selected.forEach(cat => {
+    const arr = bank[cat] || [];
+    arr.forEach(q => {
+      if (!seen.has(q.id)) {
+        seen.add(q.id);
+        combined.push(q);
+      }
+    });
+  });
+  return combined;
+}
+
+// DOM hazırsa hemen başlat; değilse event ile
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Toplam soru bilgisini göster ve input limitlerini ayarla
+function updateCountUI() {
+  const bank = buildBank();
+  const selected = getSelectedCategories();
+  const pool = buildSelectedPool(selected, bank);
+  const total = pool.length;
+
+  if (countInput) {
+    countInput.min = '1';
+    countInput.max = String(total);
+    let current = parseInt(countInput.value || '0', 10);
+    if (!(current >= 1)) current = Math.min(QUIZ_SIZE, total);
+    current = Math.max(1, Math.min(total, current));
+    countInput.value = String(current);
+  }
+  if (countHelp) {
+    const label = selected[0] === 'mix' ? 'Karışık' : selected.join(', ');
+    countHelp.textContent = `${label}: ${total} soru (1 - ${total})`;
+  }
+}
+
+// Başlat: havuz hazırla ve ekrana geç
+function onStart() {
+  const bank = buildBank();
+  const selected = getSelectedCategories();
+  const pool = buildSelectedPool(selected, bank);
+
+  const desiredRaw = countInput ? parseInt(countInput.value || '0', 10) : QUIZ_SIZE;
+  const desired = Math.max(1, Math.min(pool.length, Number.isFinite(desiredRaw) ? desiredRaw : QUIZ_SIZE));
+
+  picked = shuffle(pool).slice(0, desired).map(shuffleQuestion);
   current = 0;
   answers = Array(picked.length);
 
@@ -449,7 +878,6 @@ function updateNav() {
 
 function onSelect(idx) {
   answers[current] = idx;
-  // Seçili stili güncelle (yeniden render basit ve güvenli)
   render();
 }
 
@@ -464,7 +892,6 @@ function onNext() {
 function onFinish() {
   if (typeof answers[current] !== 'number') return nudge();
 
-  // Skor
   let correct = 0;
   resultListEl.innerHTML = '';
   picked.forEach((q, i) => {
@@ -485,14 +912,12 @@ function onFinish() {
 }
 
 function onRestart() {
-  // Başlangıç ekranına dön
   startScreen.classList.remove('hidden');
   quizScreen.classList.add('hidden');
   resultScreen.classList.add('hidden');
 }
 
 function nudge() {
-  // Basit titreşim
   optionsEl.style.transition = 'transform .12s ease';
   optionsEl.style.transform = 'translateX(4px)';
   setTimeout(() => { optionsEl.style.transform = 'translateX(-4px)'; }, 80);

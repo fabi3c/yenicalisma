@@ -19,45 +19,51 @@
 
 	<main class="quiz-container">
 		<section id="start-screen">
-			<h1 class="quiz-title">Git, GitHub ve React Quiz</h1>
-			<p class="quiz-subtitle">Havuzdan rastgele 20 soru.</p>
+			<h1 class="quiz-title">ARAS ICIN QUIZ</h1>
+			<p class="quiz-subtitle">yazdığın kadar soru çıkar.</p>
 
 			<fieldset class="category-fieldset">
 				<legend class="category-legend">Kategori seç</legend>
-				<label class="category-label"><input type="radio" name="category" value="mix" checked> Karışık</label>
-				<label class="category-label"><input type="radio" name="category" value="git"> Git</label>
-				<label class="category-label"><input type="radio" name="category" value="github"> GitHub</label>
-				<label class="category-label"><input type="radio" name="category" value="react"> React</label>
-				<label class="category-label"><input type="radio" name="category" value="javascript"> JavaScript</label>
-				<label class="category-label"><input type="radio" name="category" value="html"> HTML</label>
-				<label class="category-label"><input type="radio" name="category" value="css"> CSS</label>
+				<label class="category-label"><input type="checkbox" name="category" value="mix" checked> Karışık</label>
+				<label class="category-label"><input type="checkbox" name="category" value="git"> Git</label>
+				<label class="category-label"><input type="checkbox" name="category" value="github"> GitHub</label>
+				<label class="category-label"><input type="checkbox" name="category" value="react"> React</label>
+				<label class="category-label"><input type="checkbox" name="category" value="javascript"> JavaScript</label>
+				<label class="category-label"><input type="checkbox" name="category" value="html"> HTML</label>
+				<label class="category-label"><input type="checkbox" name="category" value="css"> CSS</label>
 			</fieldset>
+
+			<div class="count-row">
+				<label for="question-count" class="count-label text-muted">Soru sayısı</label>
+				<input id="question-count" class="count-input" type="number" min="1" step="1" value="20">
+				<small id="count-help" class="text-muted">(Bu kategori: ...)</small>
+			</div>
 
 			<button id="start-btn" class="btn">Quize Başla</button>
 		</section>
 
 		<section id="quiz-screen" class="hidden">
 			<div class="quiz-header-row">
-				<div class="quiz-progress" id="progress">Soru 1/10</div>
+				<span id="progress" class="quiz-progress">Soru 1/1</span>
 			</div>
-			<article class="question-card">
-				<h2 class="question-text" id="question"></h2>
-				<div class="options" id="options"></div>
-			</article>
+			<div class="question-card">
+				<div id="question" class="question-text"></div>
+				<div id="options" class="options"></div>
+			</div>
 			<div class="quiz-actions">
-				<button id="next-btn" class="btn">Sonraki</button>
-				<button id="finish-btn" class="btn btn-secondary hidden">Bitir</button>
+				<button id="next-btn" class="btn btn-secondary">Sonraki</button>
+				<button id="finish-btn" class="btn">Bitir</button>
 			</div>
 		</section>
 
 		<section id="result-screen" class="hidden">
-			<h2>Sonuç</h2>
-			<p class="quiz-score" id="score"></p>
-			<ol class="result-list" id="result-list"></ol>
-			<button id="restart-btn" class="btn">Tekrar</button>
+			<div id="score" class="quiz-score"></div>
+			<ol id="result-list" class="result-list"></ol>
+			<div class="quiz-actions">
+				<button id="restart-btn" class="btn btn-secondary">Tekrar</button>
+			</div>
 		</section>
 	</main>
-
-	<script src="script/quiz.js"></script>
+	<script defer src="script/quiz.js"></script>
 </body>
 </html>
